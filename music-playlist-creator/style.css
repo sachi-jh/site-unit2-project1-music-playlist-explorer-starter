@@ -4,3 +4,31 @@ body {
     padding: 0;
     background-color: #f8f8f8;
 }
+
+header {
+    color: grey;
+    background-color: rgb(202, 201, 201);
+    padding: 2px;
+    padding-left: 10px;
+    border-style: solid;
+    border-color: grey;
+}
+footer {
+    background-color: rgb(202, 201, 201);
+}
+
+#playlist-cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.likes {
+    display: flex;
+}
+
+.card {
+    border-style: solid;
+    border-color: grey;
+    border-radius: 10px;
+    margin: 10px;
+}
