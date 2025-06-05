@@ -1,25 +1,3 @@
-//document.addEventListener("DOMContentLoaded", () => {
-   // 1. checked if an element existed on the current page
-   // 2. if yes, then call whatever function.
-   //loadFeaturedPlaylistPage()
-   /*if (document.querySelector("featured-section")){
-      
-   } 
-   if (document.querySelector("playlist-cards")){
-      loadPlaylistPage()
-      const modal = document.getElementById("playlistModal");
-      const span = document.getElementsByClassName("close")[0];
-      span.onclick = function() {
-         modal.style.display = "none";
-      }
-      window.onclick = function(event) {
-         if (event.target == modal) {
-            modal.style.display = "none";
-         }
-      }
-   }*/
-   
-//})
 const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
 
@@ -35,6 +13,23 @@ function loadFeaturedPlaylistPage(){
          </div>
       </div>
    `
+   const featplaylistsongdiv = document.getElementById("featured-song-cards")
+   featuredPlaylist.songs.forEach(song => {
+      let newSong = document.createElement("div")
+      newSong.className = "featured-song-card"
+      newSong.innerHTML = `
+         <img class="featured-song-img" src="${song.songImage}">
+         <div class="song-text">
+            <h4>${song.songTitle}</h4>
+            <p>${song.artistName}</p>
+            <p>${song.albumName}</p>
+         </div>
+         <p>${song.runTime}</p>
+      `
+      //console.log(newSong)
+      featplaylistsongdiv.appendChild(newSong)
+   })
+
 }
 
 function loadPlaylistPage(){
