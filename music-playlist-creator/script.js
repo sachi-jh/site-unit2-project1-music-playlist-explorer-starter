@@ -1,8 +1,41 @@
-document.addEventListener("DOMContentLoaded", () => {
-   loadPlaylistPage()
-})
+//document.addEventListener("DOMContentLoaded", () => {
+   // 1. checked if an element existed on the current page
+   // 2. if yes, then call whatever function.
+   //loadFeaturedPlaylistPage()
+   /*if (document.querySelector("featured-section")){
+      
+   } 
+   if (document.querySelector("playlist-cards")){
+      loadPlaylistPage()
+      const modal = document.getElementById("playlistModal");
+      const span = document.getElementsByClassName("close")[0];
+      span.onclick = function() {
+         modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+         if (event.target == modal) {
+            modal.style.display = "none";
+         }
+      }
+   }*/
+   
+//})
+const modal = document.getElementById("playlistModal");
+const span = document.getElementsByClassName("close")[0];
 
-
+function loadFeaturedPlaylistPage(){
+   const featuredPlaylistdiv = document.getElementById("featured-playlist-info")
+   const featuredPlaylist = playlistData[Math.floor(Math.random() * playlistData.length)]
+   featuredPlaylistdiv.innerHTML = `
+      <div>
+         <img id="featuredPlaylistImage" src="${featuredPlaylist.playlist_art}" alt="playlist Image">
+         <div>
+            <h1 id="featuredPlaylistName">${featuredPlaylist.playlist_name}</h1>
+            <h3 id="featuredCreatorName">${featuredPlaylist.playlist_author}</h3>
+         </div>
+      </div>
+   `
+}
 
 function loadPlaylistPage(){
    const newplaylistData = document.getElementById("playlist-cards")
@@ -51,8 +84,7 @@ function likes(button){
 
 
 //Modal Script
-const modal = document.getElementById("playlistModal");
-const span = document.getElementsByClassName("close")[0];
+
 
 function openModal(playlist) {
    document.getElementById('playlistName').innerText = playlist.playlist_name;
@@ -93,11 +125,24 @@ function displaySongList (songsArr){
    })
 }
 
-span.onclick = function() {
-   modal.style.display = "none";
-}
-window.onclick = function(event) {
-   if (event.target == modal) {
+if(document.getElementById("playlistModal")){
+   
+   span.onclick = function() {
       modal.style.display = "none";
    }
+   window.onclick = function(event) {
+      if (event.target == modal) {
+         modal.style.display = "none";
+      }
+   }
 }
+
+if (document.getElementById("featured-section")){
+      console.log("if branch")
+      loadFeaturedPlaylistPage()
+      
+} else{
+      loadPlaylistPage()
+      console.log("else")
+      
+   }
