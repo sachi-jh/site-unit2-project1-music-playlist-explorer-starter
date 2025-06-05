@@ -2,10 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
    loadPlaylistPage()
 })
 
+function loadPlaylistPage(){
+   const newplaylistData = document.getElementById("playlist-cards")
+   playlistData.forEach( playlist => {
+      const elem = createPlaylistCard(playlist)
+      newplaylistData.appendChild(elem)
+   })
+}
+
 function createPlaylistCard(card){
    let newCard = document.createElement("div")
    newCard.className = "card"
-   newCard.onclick = "openModal()"
+   newCard.setAttribute("onClick", "openModal()")
    newCard.innerHTML = `
       <img class="playlist-image" src="${card.playlist_art}">
       <h4>${card.playlist_name}</h4>
@@ -17,13 +25,7 @@ function createPlaylistCard(card){
    return newCard
 }
 
-function loadPlaylistPage(){
-   const newplaylistData = document.getElementById("playlist-cards")
-   playlistData.forEach( playlist => {
-      const elem = createPlaylistCard(playlist)
-      newplaylistData.appendChild(elem)
-   })
-}
+
 
 
 
@@ -32,10 +34,10 @@ function loadPlaylistPage(){
 const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
 
-function openModal(/*playlist*/) {
-   //document.getElementById('playlistName').innerText = playlist.name;
-   //document.getElementById('playlistImage').src = playlist.imageUrl;
-   //document.getElementById('creatorName').innerText = playlist.creatorName;
+function openModal(playlist) {
+   /*document.getElementById('playlistName').innerText = playlist.playlist_name;
+   document.getElementById('playlistImage').src = playlist.playlist_art;
+   document.getElementById('creatorName').innerText = playlist.playlist_author;*/
    //document.getElementById('song-car').innerHTML = `${playlist.songs.join(', ')}`;
    modal.style.display = "block";
 }
