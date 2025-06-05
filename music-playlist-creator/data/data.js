@@ -5,9 +5,9 @@ const playlistData = [{
     playlist_art: "assets\\img\\playlist.png",
     playlistLikes: 1,
     songs: [
-        {songTitle: "Song Title", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
-        {songTitle: "Song Title", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
-        {songTitle: "Song Title", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"}
+        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
+        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
+        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"}
     ]
 },
 {
@@ -17,9 +17,9 @@ const playlistData = [{
     playlist_art: "assets\\img\\playlist.png",
     laylistLikes: 12,
     songs: [
-        {songTitle: "Song Title", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
-        {songTitle: "Song Title", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
-        {songTitle: "Song Title", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"}
+        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
+        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
+        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"}
     ]
 },
 {
@@ -29,8 +29,8 @@ const playlistData = [{
     playlist_art: "assets\\img\\playlist.png",
     playlistLikes: 3,
     songs: [
-        {songTitle: "Song Title", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
-        {songTitle: "Song Title", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
-        {songTitle: "Song Title", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"}
+        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
+        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
+        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"}
     ]
 }]

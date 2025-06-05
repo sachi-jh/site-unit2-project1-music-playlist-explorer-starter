@@ -21,6 +21,7 @@ function createPlaylistCard(card){
       <div class="likes">
          <button class="likebutton">Likes: ${card.playlistLikes}</button>
       </div>
+      
    `
    newCard.addEventListener("click", () => openModal(card))
 
@@ -40,7 +41,27 @@ function openModal(playlist) {
    document.getElementById('playlistName').innerText = playlist.playlist_name;
    document.getElementById('playlistImage').src = playlist.playlist_art;
    document.getElementById('creatorName').innerText = playlist.playlist_author;
-   //document.getElementById('song-car').innerHTML = `${playlist.songs.join(', ')}`;
+   //document.getElementsByClassName('modal-content').appendChild
+   const newSongList = document.getElementsByClassName("song-cards")[0]
+   console.log(newSongList)
+   newSongList.innerHTML = ``
+   playlist.songs.forEach(song => {
+      let newSong = document.createElement("div")
+      newSong.className = "song-card"
+      newSong.innerHTML = `
+         <img class="song-image" src="${song.songImage}">
+         <div>
+            <h4>${song.songTitle}</h4>
+            <p>${song.artistName}</p>
+            <p>${song.albumName}</p>
+         </div>
+         <p>${song.runTime}</p>
+      `
+      console.log(newSong)
+      newSongList.appendChild(newSong)
+   })
+   //document.getElementsByClassName("song-cards").innerHTML = newSongList
+   
    modal.style.display = "block";
 }
 
