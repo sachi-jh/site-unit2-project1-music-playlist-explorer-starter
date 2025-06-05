@@ -13,7 +13,7 @@ function loadPlaylistPage(){
 function createPlaylistCard(card){
    let newCard = document.createElement("div")
    newCard.className = "card"
-   newCard.setAttribute("onClick", "openModal()")
+   //newCard.setAttribute("onClick", "openModal()")
    newCard.innerHTML = `
       <img class="playlist-image" src="${card.playlist_art}">
       <h4>${card.playlist_name}</h4>
@@ -22,6 +22,8 @@ function createPlaylistCard(card){
          <button class="likebutton">Likes: ${card.playlistLikes}</button>
       </div>
    `
+   newCard.addEventListener("click", () => openModal(card))
+
    return newCard
 }
 
@@ -35,9 +37,9 @@ const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
 
 function openModal(playlist) {
-   /*document.getElementById('playlistName').innerText = playlist.playlist_name;
+   document.getElementById('playlistName').innerText = playlist.playlist_name;
    document.getElementById('playlistImage').src = playlist.playlist_art;
-   document.getElementById('creatorName').innerText = playlist.playlist_author;*/
+   document.getElementById('creatorName').innerText = playlist.playlist_author;
    //document.getElementById('song-car').innerHTML = `${playlist.songs.join(', ')}`;
    modal.style.display = "block";
 }
