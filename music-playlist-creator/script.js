@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
    loadPlaylistPage()
 })
 
+
+
 function loadPlaylistPage(){
    const newplaylistData = document.getElementById("playlist-cards")
    playlistData.forEach( playlist => {
@@ -15,20 +17,35 @@ function createPlaylistCard(card){
    newCard.className = "card"
    //newCard.setAttribute("onClick", "openModal()")
    newCard.innerHTML = `
-      <img class="playlist-image" src="${card.playlist_art}">
-      <h4>${card.playlist_name}</h4>
-      <p>${card.playlist_author}</p>
-      <div class="likes">
-         <button class="likebutton">Likes: ${card.playlistLikes}</button>
+      <div class="clickable-area">
+         <img class="playlist-image" src="${card.playlist_art}">
+         <h4>${card.playlist_name}</h4>
+         <p>${card.playlist_author}</p>
       </div>
-      
+      <div class="likes">
+         <button data-id="${card.playlistID}" onclick="likes(this)" data-liked="false"><i class="fa-regular fa-heart"></i> ${card.playlistLikes}</button>
+      </div>
    `
-   newCard.addEventListener("click", () => openModal(card))
+   newCard.getElementsByClassName("clickable-area")[0].addEventListener("click", () => openModal(card))
 
    return newCard
 }
 
+function likes(button){
+   const id = button.getAttribute('data-id');
+	const isLiked = button.getAttribute('data-liked') === 'true';
+   let likesCount = parseInt(button.textContent.match(/\d+/)[0], 10);
 
+   if (isLiked){
+      likesCount -= 1;
+		button.innerHTML = `<i class="fa-regular fa-heart"></i> ${likesCount}`;
+		button.setAttribute('data-liked', 'false');
+   } else {
+      likesCount += 1;
+		button.innerHTML = `<i class="fa-solid fa-heart"></i> ${likesCount}`;
+		button.setAttribute('data-liked', 'true');
+   }
+}
 
 
 
@@ -41,11 +58,25 @@ function openModal(playlist) {
    document.getElementById('playlistName').innerText = playlist.playlist_name;
    document.getElementById('playlistImage').src = playlist.playlist_art;
    document.getElementById('creatorName').innerText = playlist.playlist_author;
-   //document.getElementsByClassName('modal-content').appendChild
+   //document.getElementsByClassName('modal-content')[0].appendChild()
+   displaySongList(playlist.songs)
+   //document.getElementsByClassName("song-cards").innerHTML = newSongList
+   document.getElementById("shufflebutton").addEventListener("click", () =>{
+      //shuffle songs code
+      const songArr = playlist.songs
+      //console.log(songArr)
+      const shuffledArray = songArr.sort((a, b) => 0.5 - Math.random());
+      displaySongList(shuffledArray)
+
+   })
+   modal.style.display = "block";
+}
+
+function displaySongList (songsArr){
    const newSongList = document.getElementsByClassName("song-cards")[0]
-   console.log(newSongList)
+   //console.log(newSongList)
    newSongList.innerHTML = ``
-   playlist.songs.forEach(song => {
+   songsArr.forEach(song => {
       let newSong = document.createElement("div")
       newSong.className = "song-card"
       newSong.innerHTML = `
@@ -55,14 +86,11 @@ function openModal(playlist) {
             <p>${song.artistName}</p>
             <p>${song.albumName}</p>
          </div>
-         <p>${song.runTime}</p>
+         <p class="runtime">${song.runTime}</p>
       `
-      console.log(newSong)
+      //console.log(newSong)
       newSongList.appendChild(newSong)
    })
-   //document.getElementsByClassName("song-cards").innerHTML = newSongList
-   
-   modal.style.display = "block";
 }
 
 span.onclick = function() {

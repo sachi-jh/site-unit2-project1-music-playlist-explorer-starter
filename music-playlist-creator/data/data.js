@@ -5,9 +5,11 @@ const playlistData = [{
     playlist_art: "assets\\img\\playlist.png",
     playlistLikes: 1,
     songs: [
-        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
-        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
-        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"}
+        {songTitle: "What Do I Do", songImage: "assets\\img\\song.png", artistName: "SZA", albumName: "SOS Deluxe:LANA", runTime: "0:00"},
+        {songTitle: "Real Man", songImage: "assets\\img\\song.png", artistName: "beabadoobee", albumName: "This Is How Tomorrow Moves", runTime: "0:00"},
+        {songTitle: "360", songImage: "assets\\img\\song.png", artistName: "Charli xcx", albumName: "BRAT", runTime: "0:00"},
+        {songTitle: "supernatural", songImage: "assets\\img\\song.png", artistName: "Ariana Grande", albumName: "eternal sunshine", runTime: "0:00"},
+        {songTitle: "Soft Spot", songImage: "assets\\img\\song.png", artistName: "keshi", albumName: "Requiem", runTime: "0:00"}
     ]
 },
 {
@@ -15,11 +17,11 @@ const playlistData = [{
     playlist_name: "Summer Playlist",
     playlist_author: "Joe",
     playlist_art: "assets\\img\\playlist.png",
-    laylistLikes: 12,
+    playlistLikes: 12,
     songs: [
-        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
-        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
-        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"}
+        {songTitle: "Song Title 1", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
+        {songTitle: "Song Title 2", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
+        {songTitle: "Song Title 3", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"}
     ]
 },
 {
@@ -29,8 +31,8 @@ const playlistData = [{
     playlist_art: "assets\\img\\playlist.png",
     playlistLikes: 3,
     songs: [
-        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
-        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
-        {songTitle: "Song Title", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"}
+        {songTitle: "Song Title A", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
+        {songTitle: "Song Title B", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
+        {songTitle: "Song Title C", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"}
     ]
 }]
