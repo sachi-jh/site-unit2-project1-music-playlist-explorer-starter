@@ -31,6 +31,24 @@ footer {
     border-color: grey;
     border-radius: 10px;
     margin: 10px;
+    padding: 10px;
+}
+
+.card:hover{
+    border-color: black;
+    background-color: #aaa;
+}
+
+.playlist-image, #playlistImage {
+    width: 200px;
+}
+
+#playlistImage {
+    margin-right: 20px;
+}
+
+.modalImageAndTitle {
+    display: flex;
 }
 
 /* CSS for Modal COPIED FROM EXAMPLE*/

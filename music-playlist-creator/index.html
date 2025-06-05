@@ -6,7 +6,6 @@
     
     <title>Music Playlist Explorer</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,8 +17,8 @@
     <main> 
         <!-- Your main content here -->
          <section id="playlist-cards">
-            <article class="card">
-                <img src="" alt="playlist cover">
+            <article class="card" onclick="openModal()">
+                <img class="playlist-image" src="assets\img\playlist.png" alt="playlist cover">
                 <h4>Playlist Title</h4>
                 <p>Creator Name</p>
                 <div class="likes">
@@ -31,9 +30,13 @@
             <div id="playlistModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <img id="playlistImage" src="" alt="playlist Image">
-                    <h1 id="playlistName">Playlist Name</h1>
-                    <h3 id="creatorName">Creator Name</h3>
+                    <div class="modalImageAndTitle">
+                        <img id="playlistImage" src="assets\img\playlist.png" alt="playlist Image">
+                        <div>
+                            <h1 id="playlistName">Playlist Name</h1>
+                            <h3 id="creatorName">Creator Name</h3>
+                        </div>
+                    </div>
                     <div class="song-card"></div>
                 </div>
             </div>
@@ -42,7 +45,7 @@
     <footer>
         <!-- Your footer content here -->
     </footer>
-    <script src="data/data.js"></script>
+    <script src="data\data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
