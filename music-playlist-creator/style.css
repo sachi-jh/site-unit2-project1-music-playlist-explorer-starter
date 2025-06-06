@@ -6,15 +6,15 @@ body {
 }
 
 header {
-    color: grey;
-    background-color: rgb(202, 201, 201);
+    color: rgb(215, 215, 215);
+    background-color: rgb(41, 56, 84);
     padding: 2px;
     padding-left: 10px;
     border-style: solid;
     border-color: grey;
 }
 footer {
-    background-color: rgb(202, 201, 201);
+    background-color: rgb(41, 56, 84);
 }
 
 #playlist-cards {
@@ -37,7 +37,7 @@ footer {
 
 .card {
     border-style: solid;
-    border-color: grey;
+    border-color: rgb(41, 56, 84);;
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
@@ -45,7 +45,7 @@ footer {
 
 .card:hover{
     border-color: black;
-    background-color: #aaa;
+    background-color: #abc9eb;
 }
 
 .playlist-image, #playlistImage {
