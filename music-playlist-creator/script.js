@@ -119,7 +119,7 @@ function createPlaylistCard(card){
          <div class="dropdown">
             <button onclick="openOptions(${card.playlistID})" class="dropbtn">more options</button>
             <div id="myDropdown${card.playlistID}" class="dropdown-content">
-               <a href="#">Delete</a>
+               <a href="#" onclick="removeCard(${card.playlistID})">Delete</a>
                <a href="#">Edit</a>
             </div>
          </div>
@@ -128,6 +128,12 @@ function createPlaylistCard(card){
    newCard.getElementsByClassName("clickable-area")[0].addEventListener("click", () => openModal(card))
 
    return newCard
+}
+
+function removeCard(id){
+   const remcard = document.getElementsByClassName("card")[id-1]
+   console.log(remcard)
+   remcard.remove()
 }
 
 function openOptions(id) {
