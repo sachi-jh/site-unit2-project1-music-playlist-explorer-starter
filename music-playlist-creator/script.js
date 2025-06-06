@@ -1,7 +1,9 @@
 const modal = document.getElementById("playlistModal");
 const modalForm = document.getElementById("addPlaylistModal");
+const modalEdit = document.getElementById("editPlaylistModal");
 const span = document.getElementsByClassName("close")[0];
 const span2 = document.getElementsByClassName("close")[1];
+const span3 = document.getElementsByClassName("close")[2];
 let songcount = 1
 
 function add(){
@@ -16,6 +18,24 @@ function add(){
       <input type="text" class="added-album-name" name="added-album-name" required/>
       <label for="added-song-runtime">Runtime:</label>
       <input type="text" class="added-song-runtime" name="added-song-runtime" required/>
+      <button onclick="remove(this)">Remove</button>
+      </div>
+   `
+   songcount++
+   console.log(songcount)
+}
+function add2(){
+   const divElem = document.getElementById("added-inputs-edit")
+   divElem.innerHTML += `
+      <div class="songlist">
+                        <label for="edit-added-song-name">Song Name:</label>
+                        <input type="text" class="edit-added-song-name" name="added-song-name" required/>
+                        <label for="edit-added-artist-name">Artist Name:</label>
+                        <input type="text" class="edit-added-artist-name" name="added-artist-name" required/>
+                        <label for="edit-added-album-name">Album Name:</label>
+                        <input type="text" class="edit-added-album-name" name="added-album-name" required/>
+                        <label for="edit-added-song-runtime">Runtime:</label>
+                        <input type="text" class="edit-added-song-runtime" name="added-song-runtime" required/>
       <button onclick="remove(this)">Remove</button>
       </div>
    `
@@ -60,10 +80,49 @@ function addPlaylistButton(event){
    
    const newplaylistData = document.getElementById("playlist-cards")
    newplaylistData.appendChild(createPlaylistCard(arrobj))
+   document.getElementById("added-inputs").innerHTML = ``
 
    event.target.reset();
 
+
 }
+
+function editPlaylistButton(event){
+   event.preventDefault();
+   console.log("here");
+   const playlistname = document.getElementById("edit-playlist-name").value
+   const playlistauthor = document.getElementById("edit-playlist-creator-name").value
+   const songname = document.getElementsByClassName("edit-added-song-name")[0].value
+   const artistname = document.getElementsByClassName("edit-added-artist-name")[0].value
+   const albumname = document.getElementsByClassName("edit-added-album-name")[0].value
+
+   
+   let arrobj = {
+      playlistID: playlistData.length+1,
+      playlist_name: playlistname,
+      playlist_author: playlistauthor,
+      playlist_art: "assets\\img\\playlist.png",
+      playlistLikes: 0,
+      songs: [{songTitle: songname, songImage: "assets\\img\\song.png", artistName: artistname, albumName: albumname, runTime: "0:00"}]
+   }
+
+   for(let i = 1; i < songcount; i++){
+      const a = document.getElementsByClassName("edit-added-song-name")[i].value
+      const b = document.getElementsByClassName("edit-added-artist-name")[i].value
+      const c = document.getElementsByClassName("edit-added-album-name")[i].value
+      arrobj.songs.push({songTitle: a, songImage: "assets\\img\\song.png", artistName: b, albumName: c, runTime: "0:00"})
+   }
+
+   //console.log(arrobj)
+//figure out how to modify array
+   //playlistData.push(arrobj)
+   
+   //const newplaylistData = document.getElementById("playlist-cards")
+   //newplaylistData.appendChild(createPlaylistCard(arrobj))
+
+   //event.target.reset();
+}
+
 
 function loadFeaturedPlaylistPage(){
    const featuredPlaylistdiv = document.getElementById("featured-playlist-info")
@@ -120,7 +179,7 @@ function createPlaylistCard(card){
             <button onclick="openOptions(${card.playlistID})" class="dropbtn">more options</button>
             <div id="myDropdown${card.playlistID}" class="dropdown-content">
                <a href="#" onclick="removeCard(${card.playlistID})">Delete</a>
-               <a href="#">Edit</a>
+               <a href="#" onclick="editPlaylistModal(${card.playlistID})">Edit</a>
             </div>
          </div>
       </div>
@@ -186,6 +245,30 @@ function openModalForm(){
    modalForm.style.display = "block";
 }
 
+function editPlaylistModal(id){
+   document.getElementById("added-inputs-edit").innerHTML = ``
+   document.getElementById("edit-playlist-name").value = playlistData[id-1].playlist_name
+   document.getElementById("edit-playlist-creator-name").value = playlistData[id-1].playlist_author
+   console.log(playlistData[id-1].songs[0].songTitle)
+   document.getElementsByClassName("edit-added-song-name")[0].value = playlistData[id-1].songs[0].songTitle
+   document.getElementsByClassName("edit-added-artist-name")[0].value = playlistData[id-1].songs[0].artistName
+   document.getElementsByClassName("edit-added-album-name")[0].value = playlistData[id-1].songs[0].albumName
+   document.getElementsByClassName("edit-added-song-runtime")[0].value = playlistData[id-1].songs[0].runTime
+
+   for(let i = 1; i < playlistData[id-1].songs.length; i++) {
+      add2()
+   }
+
+   for(let i = 1; i < playlistData[id-1].songs.length; i++) {
+      //add()
+      document.getElementsByClassName("edit-added-song-name")[i].value = playlistData[id-1].songs[i].songTitle
+      document.getElementsByClassName("edit-added-artist-name")[i].value = playlistData[id-1].songs[i].artistName
+      document.getElementsByClassName("edit-added-album-name")[i].value = playlistData[id-1].songs[i].albumName
+      document.getElementsByClassName("edit-added-song-runtime")[i].value = playlistData[id-1].songs[i].runTime
+   }
+   modalEdit.style.display = "block";
+}
+
 function displaySongList (songsArr){
    const newSongList = document.getElementsByClassName("song-cards")[0]
    //console.log(newSongList)
@@ -231,6 +314,18 @@ if(document.getElementById("addPlaylistModal")){
    }
 }
 
+if(document.getElementById("editPlaylistModal")){
+   
+   span3.onclick = function() {
+      modalEdit.style.display = "none";
+   }
+   window.onclick = function(event) {
+      if (event.target == modal) {
+         modalEdit.style.display = "none";
+      }
+   }
+}
+
 if(document.getElementsByClassName("dropdown-content")){
    window.onclick = function(event) {
       if (!event.target.matches('.dropbtn')) {
@@ -254,6 +349,8 @@ if (document.getElementById("featured-section")){
       loadPlaylistPage()
       console.log("else")
       document.getElementById('newPlaylist').addEventListener('submit', addPlaylistButton);
+      //document.getElementById('edit').addEventListener('submit', editPlaylistButton);
+
 
       
 } else {

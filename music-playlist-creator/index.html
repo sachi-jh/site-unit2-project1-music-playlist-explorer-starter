@@ -38,32 +38,61 @@
                     <div class="song-cards"></div>
                 </div>
         </div>
-        <div id="addPlaylistModal" class="modal2">
+        <div id="addPlaylistModal" class="modal">
             <div class="modal-content">
                     <span class="close">&times;</span>
                     <form id="newPlaylist">
                         <label for="playlist-name">Playlist Name:</label>
-                        <input type="text" id="playlist-name" name="playlist-name" required/>
+                        <input type="text" id="playlist-name" name="playlist-name" value="" required/>
 
-                        <label for="playlist-creator-name">Your Name:</label>
-                        <input type="text" id="playlist-creator-name" name="playlist-creator-name" required/>
+                        <label for="playlist-creator-name">Creator Name:</label>
+                        <input type="text" id="playlist-creator-name" name="playlist-creator-name" value="" required/>
                         <!--Create a add song button that adds all inputs for a new song in playlist-->
 
                         <div class="songlist">
                         <label for="added-song-name">Song Name:</label>
-                        <input type="text" class="added-song-name" name="added-song-name" required/>
+                        <input type="text" class="added-song-name" name="added-song-name" value="" required/>
                         <label for="added-artist-name">Artist Name:</label>
-                        <input type="text" class="added-artist-name" name="added-artist-name" required/>
+                        <input type="text" class="added-artist-name" name="added-artist-name" value="" required/>
                         <label for="added-album-name">Album Name:</label>
-                        <input type="text" class="added-album-name" name="added-album-name" required/>
+                        <input type="text" class="added-album-name" name="added-album-name" value="" required/>
                         <label for="added-song-runtime">Runtime:</label>
-                        <input type="text" class="added-song-runtime" name="added-song-runtime" required/>
+                        <input type="text" class="added-song-runtime" name="added-song-runtime" value="" required/>
                         <p class="add-button" onclick="add()">{+}</p>
                         </div>
 
                         <div id="added-inputs"></div>
 
                         <button type="submit">Add Playlist</button>
+                    </form>
+                </div>
+        </div>
+        <div id="editPlaylistModal" class="modal">
+            <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <form id="editPlaylist">
+                        <label for="edit-playlist-name">Playlist Name:</label>
+                        <input type="text" id="edit-playlist-name" name="playlist-name" required/>
+
+                        <label for="playlist-creator-name">Your Name:</label>
+                        <input type="text" id="edit-playlist-creator-name" name="playlist-creator-name" required/>
+                        <!--Create a add song button that adds all inputs for a new song in playlist-->
+
+                        <div class="songlist">
+                        <label for="edit-added-song-name">Song Name:</label>
+                        <input type="text" class="edit-added-song-name" name="added-song-name" required/>
+                        <label for="edit-added-artist-name">Artist Name:</label>
+                        <input type="text" class="edit-added-artist-name" name="added-artist-name" required/>
+                        <label for="edit-added-album-name">Album Name:</label>
+                        <input type="text" class="edit-added-album-name" name="added-album-name" required/>
+                        <label for="edit-added-song-runtime">Runtime:</label>
+                        <input type="text" class="edit-added-song-runtime" name="added-song-runtime" required/>
+                        <p class="add-button" onclick="add2()">{+}</p>
+                        </div>
+
+                        <div id="added-inputs-edit"></div>
+
+                        <button type="submit">Update Playlist</button>
                     </form>
                 </div>
         </div>
