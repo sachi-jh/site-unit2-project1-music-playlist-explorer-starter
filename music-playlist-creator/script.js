@@ -61,6 +61,8 @@ function addPlaylistButton(event){
    const newplaylistData = document.getElementById("playlist-cards")
    newplaylistData.appendChild(createPlaylistCard(arrobj))
 
+   event.target.reset();
+
 }
 
 function loadFeaturedPlaylistPage(){
