@@ -1,24 +1,66 @@
 const modal = document.getElementById("playlistModal");
+const modalForm = document.getElementById("addPlaylistModal");
 const span = document.getElementsByClassName("close")[0];
+const span2 = document.getElementsByClassName("close")[1];
+let songcount = 1
 
 function add(){
    const divElem = document.getElementById("added-inputs")
    divElem.innerHTML += `
       <div class="songlist">
       <label for="added-song-name">Song Name:</label>
-      <input type="text" id="added-song-name" name="added-song-name" required/>
+      <input type="text" class="added-song-name" name="added-song-name" required/>
       <label for="added-artist-name">Artist Name:</label>
-      <input type="text" id="added-artist-name" name="added-artist-name" required/>
+      <input type="text" class="added-artist-name" name="added-artist-name" required/>
       <label for="added-album-name">Album Name:</label>
-      <input type="text" id="added-album-name" name="added-album-name" required/>
+      <input type="text" class="added-album-name" name="added-album-name" required/>
       <label for="added-song-runtime">Runtime:</label>
-      <input type="text" id="added-song-runtime" name="added-song-runtime" required/>
+      <input type="text" class="added-song-runtime" name="added-song-runtime" required/>
       <button onclick="remove(this)">Remove</button>
       </div>
    `
+   songcount++
+   console.log(songcount)
 }
 function remove(btn){
    btn.parentElement.remove();
+   songcount--
+   console.log(songcount)
+}
+
+function addPlaylistButton(event){
+   event.preventDefault();
+   console.log("here");
+   const playlistname = document.getElementById("playlist-name").value
+   const playlistauthor = document.getElementById("playlist-creator-name").value
+   const songname = document.getElementsByClassName("added-song-name")[0].value
+   const artistname = document.getElementsByClassName("added-artist-name")[0].value
+   const albumname = document.getElementsByClassName("added-album-name")[0].value
+
+   
+   let arrobj = {
+      playlistID: playlistData.length+1,
+      playlist_name: playlistname,
+      playlist_author: playlistauthor,
+      playlist_art: "assets\\img\\playlist.png",
+      playlistLikes: 0,
+      songs: [{songTitle: songname, songImage: "assets\\img\\song.png", artistName: artistname, albumName: albumname, runTime: "0:00"}]
+   }
+
+   for(let i = 1; i < songcount; i++){
+      const a = document.getElementsByClassName("added-song-name")[i].value
+      const b = document.getElementsByClassName("added-artist-name")[i].value
+      const c = document.getElementsByClassName("added-album-name")[i].value
+      arrobj.songs.push({songTitle: a, songImage: "assets\\img\\song.png", artistName: b, albumName: c, runTime: "0:00"})
+   }
+
+   //console.log(arrobj)
+//figure out how to modify array
+   //playlistData.push(arrobj)
+   
+   const newplaylistData = document.getElementById("playlist-cards")
+   newplaylistData.appendChild(createPlaylistCard(arrobj))
+
 }
 
 function loadFeaturedPlaylistPage(){
@@ -72,11 +114,24 @@ function createPlaylistCard(card){
       </div>
       <div class="likes">
          <button data-id="${card.playlistID}" onclick="likes(this)" data-liked="false"><i class="fa-regular fa-heart"></i> ${card.playlistLikes}</button>
+         <div class="dropdown">
+            <button onclick="openOptions(${card.playlistID})" class="dropbtn">more options</button>
+            <div id="myDropdown${card.playlistID}" class="dropdown-content">
+               <a href="#">Delete</a>
+               <a href="#">Edit</a>
+            </div>
+         </div>
       </div>
    `
    newCard.getElementsByClassName("clickable-area")[0].addEventListener("click", () => openModal(card))
 
    return newCard
+}
+
+function openOptions(id) {
+   console.log("myDropdown" + id)
+   const divelem = document.getElementById("myDropdown" + id)
+   divelem.classList.toggle("show");
 }
 
 function likes(button){
@@ -119,6 +174,10 @@ function openModal(playlist) {
    modal.style.display = "block";
 }
 
+function openModalForm(){
+   modalForm.style.display = "block";
+}
+
 function displaySongList (songsArr){
    const newSongList = document.getElementsByClassName("song-cards")[0]
    //console.log(newSongList)
@@ -152,6 +211,33 @@ if(document.getElementById("playlistModal")){
    }
 }
 
+if(document.getElementById("addPlaylistModal")){
+   
+   span2.onclick = function() {
+      modalForm.style.display = "none";
+   }
+   window.onclick = function(event) {
+      if (event.target == modal) {
+         modalForm.style.display = "none";
+      }
+   }
+}
+
+if(document.getElementsByClassName("dropdown-content")){
+   window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+         var dropdowns = document.getElementsByClassName("dropdown-content");
+         var i;
+         for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+            }
+         }
+         }
+      }
+}
+
 if (document.getElementById("featured-section")){
       console.log("if branch")
       loadFeaturedPlaylistPage()
@@ -159,5 +245,8 @@ if (document.getElementById("featured-section")){
 } else if(document.getElementById("playlist-cards")){
       loadPlaylistPage()
       console.log("else")
+      document.getElementById('newPlaylist').addEventListener('submit', addPlaylistButton);
+
       
-   }
+} else {
+}
