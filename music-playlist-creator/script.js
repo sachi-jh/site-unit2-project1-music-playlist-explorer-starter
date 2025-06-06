@@ -5,7 +5,7 @@ const span = document.getElementsByClassName("close")[0];
 const span2 = document.getElementsByClassName("close")[1];
 const span3 = document.getElementsByClassName("close")[2];
 let songcount = 1
-let addedplaylists
+let addedplaylists = playlistData
 
 function add(){
    const divElem = document.getElementById("added-inputs")
@@ -57,7 +57,7 @@ function addPlaylistButton(event){
    const songname = document.getElementsByClassName("added-song-name")[0].value
    const artistname = document.getElementsByClassName("added-artist-name")[0].value
    const albumname = document.getElementsByClassName("added-album-name")[0].value
-   let d = new Date()
+   let d = Date.now()
    
    let arrobj = {
       playlistID: playlistData.length+1,
@@ -65,7 +65,7 @@ function addPlaylistButton(event){
       playlist_author: playlistauthor,
       playlist_art: "assets\\img\\playlist.png",
       playlistLikes: 0,
-      playlistDate: d.getMinutes,
+      playlistDate: d,
       songs: [{songTitle: songname, songImage: "assets\\img\\song.png", artistName: artistname, albumName: albumname, runTime: "0:00"}]
    }
 
@@ -126,8 +126,8 @@ function editPlaylistButton(event){
 }
 
 function sortByDate(){
-   let temparr = playlistData//.concat(addedplaylists)
-   let arr = temparr.sort((a, b) => a.playlistDate - b.playlistDate)
+   let temparr = addedplaylists
+   let arr = temparr.sort((a, b) => b.playlistDate - a.playlistDate)
    const newplaylistData = document.getElementById("playlist-cards")
    newplaylistData.innerHTML = ``
    arr.forEach( playlist => {
@@ -137,7 +137,7 @@ function sortByDate(){
 }
 
 function sortDefault(){
-   let temparr = playlistData//.concat(addedplaylists)
+   let temparr = addedplaylists
    let arr = temparr.sort((a, b) => a.playlistID - b.playlistID)
    const newplaylistData = document.getElementById("playlist-cards")
    newplaylistData.innerHTML = ``
@@ -148,7 +148,7 @@ function sortDefault(){
 }
 
 function sortByLikes(){
-   let temparr = playlistData//.concat(addedplaylists)
+   let temparr = addedplaylists
    let arr = temparr.sort((a, b) => b.playlistLikes - a.playlistLikes)
    const newplaylistData = document.getElementById("playlist-cards")
    newplaylistData.innerHTML = ``
