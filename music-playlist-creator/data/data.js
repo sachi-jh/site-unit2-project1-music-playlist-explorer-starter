@@ -75,7 +75,7 @@ const playlistData = [{
     playlist_author: "Sachi",
     playlist_art: "assets\\img\\playlist.png",
     playlistLikes: 1,
-    playlistDate: 3000,
+    playlistDate: 5000,
     songs: [
         {songTitle: "What Do I Do", songImage: "assets\\img\\song.png", artistName: "SZA", albumName: "SOS Deluxe:LANA", runTime: "0:00"},
         {songTitle: "Real Man", songImage: "assets\\img\\song.png", artistName: "beabadoobee", albumName: "This Is How Tomorrow Moves", runTime: "0:00"},

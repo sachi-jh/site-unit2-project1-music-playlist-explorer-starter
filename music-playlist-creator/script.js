@@ -60,7 +60,7 @@ function addPlaylistButton(event){
    let d = Date.now()
    
    let arrobj = {
-      playlistID: playlistData.length+1,
+      playlistID: addedplaylists.length+1,
       playlist_name: playlistname,
       playlist_author: playlistauthor,
       playlist_art: "assets\\img\\playlist.png",
@@ -80,8 +80,8 @@ function addPlaylistButton(event){
 //figure out how to modify array
    addedplaylists.push(arrobj)
    
-   const newplaylistData = document.getElementById("playlist-cards")
-   newplaylistData.appendChild(createPlaylistCard(arrobj))
+   const newaddedplaylists = document.getElementById("playlist-cards")
+   newaddedplaylists.appendChild(createPlaylistCard(arrobj))
    document.getElementById("added-inputs").innerHTML = ``
 
    event.target.reset();
@@ -98,13 +98,14 @@ function editPlaylistButton(event){
    const artistname = document.getElementsByClassName("edit-added-artist-name")[0].value
    const albumname = document.getElementsByClassName("edit-added-album-name")[0].value
 
-   
+   const id = addedplaylists.map(item => item.playlist_name).indexOf(playlistname) + 1
+   console.log(id)
    let arrobj = {
-      playlistID: playlistData.length+1,
+      playlistID: id,
       playlist_name: playlistname,
       playlist_author: playlistauthor,
       playlist_art: "assets\\img\\playlist.png",
-      playlistLikes: 0,
+      playlistLikes: addedplaylists[id-1].playlistLikes,
       songs: [{songTitle: songname, songImage: "assets\\img\\song.png", artistName: artistname, albumName: albumname, runTime: "0:00"}]
    }
 
@@ -117,50 +118,58 @@ function editPlaylistButton(event){
 
    //console.log(arrobj)
 //figure out how to modify array
-   //playlistData.push(arrobj)
+   //addedplaylists.push(arrobj)
+   addedplaylists[id-1] = arrobj
+   let temparr = addedplaylists
+   let arr = temparr.sort((a, b) => a.playlistID - b.playlistID)
+   const newaddedplaylists = document.getElementById("playlist-cards")
+   newaddedplaylists.innerHTML = ``
+   arr.forEach( playlist => {
+      const elem = createPlaylistCard(playlist)
+      newaddedplaylists.appendChild(elem)
+   })
+   //const newaddedplaylists = document.getElementById("playlist-cards")
+   //newaddedplaylists.appendChild(createPlaylistCard(arrobj))
    
-   //const newplaylistData = document.getElementById("playlist-cards")
-   //newplaylistData.appendChild(createPlaylistCard(arrobj))
-
    //event.target.reset();
 }
 
 function sortByDate(){
    let temparr = addedplaylists
    let arr = temparr.sort((a, b) => b.playlistDate - a.playlistDate)
-   const newplaylistData = document.getElementById("playlist-cards")
-   newplaylistData.innerHTML = ``
+   const newaddedplaylists = document.getElementById("playlist-cards")
+   newaddedplaylists.innerHTML = ``
    arr.forEach( playlist => {
       const elem = createPlaylistCard(playlist)
-      newplaylistData.appendChild(elem)
+      newaddedplaylists.appendChild(elem)
    })
 }
 
 function sortDefault(){
    let temparr = addedplaylists
    let arr = temparr.sort((a, b) => a.playlistID - b.playlistID)
-   const newplaylistData = document.getElementById("playlist-cards")
-   newplaylistData.innerHTML = ``
+   const newaddedplaylists = document.getElementById("playlist-cards")
+   newaddedplaylists.innerHTML = ``
    arr.forEach( playlist => {
       const elem = createPlaylistCard(playlist)
-      newplaylistData.appendChild(elem)
+      newaddedplaylists.appendChild(elem)
    })
 }
 
 function sortByLikes(){
    let temparr = addedplaylists
    let arr = temparr.sort((a, b) => b.playlistLikes - a.playlistLikes)
-   const newplaylistData = document.getElementById("playlist-cards")
-   newplaylistData.innerHTML = ``
+   const newaddedplaylists = document.getElementById("playlist-cards")
+   newaddedplaylists.innerHTML = ``
    arr.forEach( playlist => {
       const elem = createPlaylistCard(playlist)
-      newplaylistData.appendChild(elem)
+      newaddedplaylists.appendChild(elem)
    })
 }
 
 function loadFeaturedPlaylistPage(){
    const featuredPlaylistdiv = document.getElementById("featured-playlist-info")
-   const featuredPlaylist = playlistData[Math.floor(Math.random() * playlistData.length)]
+   const featuredPlaylist = addedplaylists[Math.floor(Math.random() * addedplaylists.length)]
    featuredPlaylistdiv.innerHTML = `
       <div>
          <img id="featuredPlaylistImage" src="${featuredPlaylist.playlist_art}" alt="playlist Image">
@@ -190,10 +199,10 @@ function loadFeaturedPlaylistPage(){
 }
 
 function loadPlaylistPage(){
-   const newplaylistData = document.getElementById("playlist-cards")
-   playlistData.forEach( playlist => {
+   const newaddedplaylists = document.getElementById("playlist-cards")
+   addedplaylists.forEach( playlist => {
       const elem = createPlaylistCard(playlist)
-      newplaylistData.appendChild(elem)
+      newaddedplaylists.appendChild(elem)
    })
 }
 
@@ -225,7 +234,10 @@ function createPlaylistCard(card){
 
 function removeCard(id){
    const remcard = document.getElementsByClassName("card")[id-1]
+   addedplaylists.splice(id-1, 1)
+   console.log(addedplaylists)
    console.log(remcard)
+
    remcard.remove()
 }
 
@@ -281,24 +293,24 @@ function openModalForm(){
 
 function editPlaylistModal(id){
    document.getElementById("added-inputs-edit").innerHTML = ``
-   document.getElementById("edit-playlist-name").value = playlistData[id-1].playlist_name
-   document.getElementById("edit-playlist-creator-name").value = playlistData[id-1].playlist_author
-   console.log(playlistData[id-1].songs[0].songTitle)
-   document.getElementsByClassName("edit-added-song-name")[0].value = playlistData[id-1].songs[0].songTitle
-   document.getElementsByClassName("edit-added-artist-name")[0].value = playlistData[id-1].songs[0].artistName
-   document.getElementsByClassName("edit-added-album-name")[0].value = playlistData[id-1].songs[0].albumName
-   document.getElementsByClassName("edit-added-song-runtime")[0].value = playlistData[id-1].songs[0].runTime
+   document.getElementById("edit-playlist-name").value = addedplaylists[id-1].playlist_name
+   document.getElementById("edit-playlist-creator-name").value = addedplaylists[id-1].playlist_author
+   console.log(addedplaylists[id-1].songs[0].songTitle)
+   document.getElementsByClassName("edit-added-song-name")[0].value = addedplaylists[id-1].songs[0].songTitle
+   document.getElementsByClassName("edit-added-artist-name")[0].value = addedplaylists[id-1].songs[0].artistName
+   document.getElementsByClassName("edit-added-album-name")[0].value = addedplaylists[id-1].songs[0].albumName
+   document.getElementsByClassName("edit-added-song-runtime")[0].value = addedplaylists[id-1].songs[0].runTime
 
-   for(let i = 1; i < playlistData[id-1].songs.length; i++) {
+   for(let i = 1; i < addedplaylists[id-1].songs.length; i++) {
       add2()
    }
 
-   for(let i = 1; i < playlistData[id-1].songs.length; i++) {
+   for(let i = 1; i < addedplaylists[id-1].songs.length; i++) {
       //add()
-      document.getElementsByClassName("edit-added-song-name")[i].value = playlistData[id-1].songs[i].songTitle
-      document.getElementsByClassName("edit-added-artist-name")[i].value = playlistData[id-1].songs[i].artistName
-      document.getElementsByClassName("edit-added-album-name")[i].value = playlistData[id-1].songs[i].albumName
-      document.getElementsByClassName("edit-added-song-runtime")[i].value = playlistData[id-1].songs[i].runTime
+      document.getElementsByClassName("edit-added-song-name")[i].value = addedplaylists[id-1].songs[i].songTitle
+      document.getElementsByClassName("edit-added-artist-name")[i].value = addedplaylists[id-1].songs[i].artistName
+      document.getElementsByClassName("edit-added-album-name")[i].value = addedplaylists[id-1].songs[i].albumName
+      document.getElementsByClassName("edit-added-song-runtime")[i].value = addedplaylists[id-1].songs[i].runTime
    }
    modalEdit.style.display = "block";
 }
@@ -395,7 +407,7 @@ if (document.getElementById("featured-section")){
       loadPlaylistPage()
       console.log("else")
       document.getElementById('newPlaylist').addEventListener('submit', addPlaylistButton);
-      //document.getElementById('edit').addEventListener('submit', editPlaylistButton);
+      document.getElementById('editPlaylist').addEventListener('submit', editPlaylistButton);
       
 
       
