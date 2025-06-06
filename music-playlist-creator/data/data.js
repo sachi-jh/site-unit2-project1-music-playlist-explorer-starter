@@ -4,6 +4,7 @@ const playlistData = [{
     playlist_author: "Sachi",
     playlist_art: "assets\\img\\playlist.png",
     playlistLikes: 1,
+    playlistDate: 5000,
     songs: [
         {songTitle: "What Do I Do", songImage: "assets\\img\\song.png", artistName: "SZA", albumName: "SOS Deluxe:LANA", runTime: "0:00"},
         {songTitle: "Real Man", songImage: "assets\\img\\song.png", artistName: "beabadoobee", albumName: "This Is How Tomorrow Moves", runTime: "0:00"},
@@ -18,6 +19,7 @@ const playlistData = [{
     playlist_author: "Joe",
     playlist_art: "assets\\img\\playlist.png",
     playlistLikes: 12,
+    playlistDate: 500,
     songs: [
         {songTitle: "Song Title 1", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
         {songTitle: "Song Title 2", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
@@ -30,6 +32,7 @@ const playlistData = [{
     playlist_author: "Jimmy",
     playlist_art: "assets\\img\\playlist.png",
     playlistLikes: 3,
+    playlistDate: 4000,
     songs: [
         {songTitle: "Song Title A", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
         {songTitle: "Song Title B", songImage: "assets\\img\\song.png", artistName: "Artist Name", albumName: "Album Name", runTime: "0:00"},
@@ -42,6 +45,7 @@ const playlistData = [{
     playlist_author: "Sally",
     playlist_art: "assets\\img\\playlist.png",
     playlistLikes: 7,
+    playlistDate: 1000,
     songs: [
         {songTitle: "Kiss Me Thru The Phone", songImage: "assets\\img\\song.png", artistName: "Soulja Boy, Sammie", albumName: "iSouljaBoyTellem", runTime: "0:00"},
         {songTitle: "Umbrella", songImage: "assets\\img\\song.png", artistName: "Rihanna, JAY-Z", albumName: "Good Girl Gone Bad", runTime: "0:00"},
@@ -56,6 +60,7 @@ const playlistData = [{
     playlist_author: "Sachi",
     playlist_art: "assets\\img\\playlist.png",
     playlistLikes: 5,
+    playlistDate: 50000,
     songs: [
         {songTitle: "Summer", songImage: "assets\\img\\song.png", artistName: "Joe Hisaishi", albumName: "idk", runTime: "0:00"},
         {songTitle: "Duel of the Fates", songImage: "assets\\img\\song.png", artistName: "John Williams", albumName: "Star Wars: The Phantom Menace", runTime: "0:00"},
@@ -70,6 +75,7 @@ const playlistData = [{
     playlist_author: "Sachi",
     playlist_art: "assets\\img\\playlist.png",
     playlistLikes: 1,
+    playlistDate: 3000,
     songs: [
         {songTitle: "What Do I Do", songImage: "assets\\img\\song.png", artistName: "SZA", albumName: "SOS Deluxe:LANA", runTime: "0:00"},
         {songTitle: "Real Man", songImage: "assets\\img\\song.png", artistName: "beabadoobee", albumName: "This Is How Tomorrow Moves", runTime: "0:00"},

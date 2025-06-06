@@ -5,6 +5,7 @@ const span = document.getElementsByClassName("close")[0];
 const span2 = document.getElementsByClassName("close")[1];
 const span3 = document.getElementsByClassName("close")[2];
 let songcount = 1
+let addedplaylists
 
 function add(){
    const divElem = document.getElementById("added-inputs")
@@ -56,7 +57,7 @@ function addPlaylistButton(event){
    const songname = document.getElementsByClassName("added-song-name")[0].value
    const artistname = document.getElementsByClassName("added-artist-name")[0].value
    const albumname = document.getElementsByClassName("added-album-name")[0].value
-
+   let d = new Date()
    
    let arrobj = {
       playlistID: playlistData.length+1,
@@ -64,6 +65,7 @@ function addPlaylistButton(event){
       playlist_author: playlistauthor,
       playlist_art: "assets\\img\\playlist.png",
       playlistLikes: 0,
+      playlistDate: d.getMinutes,
       songs: [{songTitle: songname, songImage: "assets\\img\\song.png", artistName: artistname, albumName: albumname, runTime: "0:00"}]
    }
 
@@ -76,7 +78,7 @@ function addPlaylistButton(event){
 
    //console.log(arrobj)
 //figure out how to modify array
-   //playlistData.push(arrobj)
+   addedplaylists.push(arrobj)
    
    const newplaylistData = document.getElementById("playlist-cards")
    newplaylistData.appendChild(createPlaylistCard(arrobj))
@@ -123,6 +125,38 @@ function editPlaylistButton(event){
    //event.target.reset();
 }
 
+function sortByDate(){
+   let temparr = playlistData//.concat(addedplaylists)
+   let arr = temparr.sort((a, b) => a.playlistDate - b.playlistDate)
+   const newplaylistData = document.getElementById("playlist-cards")
+   newplaylistData.innerHTML = ``
+   arr.forEach( playlist => {
+      const elem = createPlaylistCard(playlist)
+      newplaylistData.appendChild(elem)
+   })
+}
+
+function sortDefault(){
+   let temparr = playlistData//.concat(addedplaylists)
+   let arr = temparr.sort((a, b) => a.playlistID - b.playlistID)
+   const newplaylistData = document.getElementById("playlist-cards")
+   newplaylistData.innerHTML = ``
+   arr.forEach( playlist => {
+      const elem = createPlaylistCard(playlist)
+      newplaylistData.appendChild(elem)
+   })
+}
+
+function sortByLikes(){
+   let temparr = playlistData//.concat(addedplaylists)
+   let arr = temparr.sort((a, b) => b.playlistLikes - a.playlistLikes)
+   const newplaylistData = document.getElementById("playlist-cards")
+   newplaylistData.innerHTML = ``
+   arr.forEach( playlist => {
+      const elem = createPlaylistCard(playlist)
+      newplaylistData.appendChild(elem)
+   })
+}
 
 function loadFeaturedPlaylistPage(){
    const featuredPlaylistdiv = document.getElementById("featured-playlist-info")
@@ -341,6 +375,18 @@ if(document.getElementsByClassName("dropdown-content")){
       }
 }
 
+function checkVal (){
+   if (document.getElementById('selectsort').value == "date"){
+      //console.log(document.getElementById('selectsort').value)
+      sortByDate()
+   } else if (document.getElementById('selectsort').value == "default"){
+      //console.log(document.getElementById('selectsort').value)
+      sortDefault()
+   } else if (document.getElementById('selectsort').value == "likes"){
+      sortByLikes()
+   }
+}
+
 if (document.getElementById("featured-section")){
       console.log("if branch")
       loadFeaturedPlaylistPage()
@@ -350,7 +396,7 @@ if (document.getElementById("featured-section")){
       console.log("else")
       document.getElementById('newPlaylist').addEventListener('submit', addPlaylistButton);
       //document.getElementById('edit').addEventListener('submit', editPlaylistButton);
-
+      
 
       
 } else {

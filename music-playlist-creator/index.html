@@ -22,6 +22,12 @@
 
     <main> 
         <!-- Your main content here -->
+         <p>Sort By:</p>
+         <select id="selectsort" onchange="checkVal()">
+            <option value="default" >Default</option>
+            <option value="date">Date</option>
+            <option value="likes">Likes</option>
+        </select>
          <section id="playlist-cards">
          </section>
         <div id="playlistModal" class="modal">
