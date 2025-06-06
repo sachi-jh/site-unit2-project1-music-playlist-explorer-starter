@@ -22,6 +22,14 @@ footer {
     flex-wrap: wrap;
 }
 
+#newPlaylist{
+    display: flex;
+    align-items: start;
+    flex-direction: column;    
+}
+.songlist{
+    flex-direction: row;
+}
 .likes {
     display: flex;
 }

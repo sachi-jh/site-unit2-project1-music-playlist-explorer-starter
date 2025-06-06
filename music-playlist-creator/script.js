@@ -1,6 +1,26 @@
 const modal = document.getElementById("playlistModal");
 const span = document.getElementsByClassName("close")[0];
 
+function add(){
+   const divElem = document.getElementById("added-inputs")
+   divElem.innerHTML += `
+      <div class="songlist">
+      <label for="added-song-name">Song Name:</label>
+      <input type="text" id="added-song-name" name="added-song-name" required/>
+      <label for="added-artist-name">Artist Name:</label>
+      <input type="text" id="added-artist-name" name="added-artist-name" required/>
+      <label for="added-album-name">Album Name:</label>
+      <input type="text" id="added-album-name" name="added-album-name" required/>
+      <label for="added-song-runtime">Runtime:</label>
+      <input type="text" id="added-song-runtime" name="added-song-runtime" required/>
+      <button onclick="remove(this)">Remove</button>
+      </div>
+   `
+}
+function remove(btn){
+   btn.parentElement.remove();
+}
+
 function loadFeaturedPlaylistPage(){
    const featuredPlaylistdiv = document.getElementById("featured-playlist-info")
    const featuredPlaylist = playlistData[Math.floor(Math.random() * playlistData.length)]
@@ -136,7 +156,7 @@ if (document.getElementById("featured-section")){
       console.log("if branch")
       loadFeaturedPlaylistPage()
       
-} else{
+} else if(document.getElementById("playlist-cards")){
       loadPlaylistPage()
       console.log("else")
       
