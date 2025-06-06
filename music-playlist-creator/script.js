@@ -23,7 +23,7 @@ function add(){
       </div>
    `
    songcount++
-   console.log(songcount)
+   //console.log(songcount)
 }
 function add2(){
    const divElem = document.getElementById("added-inputs-edit")
@@ -41,17 +41,17 @@ function add2(){
       </div>
    `
    songcount++
-   console.log(songcount)
+   //console.log(songcount)
 }
 function remove(btn){
    btn.parentElement.remove();
    songcount--
-   console.log(songcount)
+   //console.log(songcount)
 }
 
 function addPlaylistButton(event){
    event.preventDefault();
-   console.log("here");
+   //console.log("here");
    const playlistname = document.getElementById("playlist-name").value
    const playlistauthor = document.getElementById("playlist-creator-name").value
    const songname = document.getElementsByClassName("added-song-name")[0].value
@@ -91,14 +91,15 @@ function addPlaylistButton(event){
 
 function editPlaylistButton(event){
    event.preventDefault();
-   console.log("here");
+   //console.log("here");
    const playlistname = document.getElementById("edit-playlist-name").value
    const playlistauthor = document.getElementById("edit-playlist-creator-name").value
    const songname = document.getElementsByClassName("edit-added-song-name")[0].value
    const artistname = document.getElementsByClassName("edit-added-artist-name")[0].value
    const albumname = document.getElementsByClassName("edit-added-album-name")[0].value
-
-   const id = addedplaylists.map(item => item.playlist_name).indexOf(playlistname) + 1
+   const id = document.getElementById("editID").innerText
+   //const id = addedplaylists.map(item => item.playlist_name).indexOf(playlistname) + 1
+   //console.log(id)
    console.log(id)
    let arrobj = {
       playlistID: id,
@@ -300,7 +301,7 @@ function editPlaylistModal(id){
    document.getElementsByClassName("edit-added-artist-name")[0].value = addedplaylists[id-1].songs[0].artistName
    document.getElementsByClassName("edit-added-album-name")[0].value = addedplaylists[id-1].songs[0].albumName
    document.getElementsByClassName("edit-added-song-runtime")[0].value = addedplaylists[id-1].songs[0].runTime
-
+   document.getElementById("editID").innerHTML = `${id}`
    for(let i = 1; i < addedplaylists[id-1].songs.length; i++) {
       add2()
    }
