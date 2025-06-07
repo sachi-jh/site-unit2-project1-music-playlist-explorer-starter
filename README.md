@@ -4,7 +4,7 @@ Submitted by: **Sachi Hansalia**
 
 Estimated time spent: **10** hours spent in total
 
-Deployed Application (**required**): [Music Playlist Explorer Deployed Site](ADD_LINK_HERE)
+Deployed Application (**required**): [Music Playlist Explorer Deployed Site]([ADD_LINK_HERE](https://site-unit2-project1-music-playlist-x76n.onrender.com))
 
 ### Application Features
 
