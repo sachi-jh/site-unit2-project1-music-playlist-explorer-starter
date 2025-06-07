@@ -4,7 +4,7 @@ Submitted by: **Sachi Hansalia**
 
 Estimated time spent: **10** hours spent in total
 
-Deployed Application (**required**): [Music Playlist Explorer Deployed Site]([ADD_LINK_HERE](https://site-unit2-project1-music-playlist-x76n.onrender.com))
+Deployed Application (**required**): [Music Playlist Explorer Deployed Site](https://site-unit2-project1-music-playlist-x76n.onrender.com)
 
 ### Application Features
 
@@ -130,9 +130,8 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site]([AD
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video actually renders and is playable when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
 
-`[ADD_EMBEDDED_CODE_HERE](https://www.loom.com/share/c56b6e88f4284e91b1eb3cd4515362b9?sid=f798fd59-47b0-4db3-be30-d8cbc2675d0b)`
+`[https://www.loom.com/share/c56b6e88f4284e91b1eb3cd4515362b9?sid=f798fd59-47b0-4db3-be30-d8cbc2675d0b]`
 
 ### Reflection
 
